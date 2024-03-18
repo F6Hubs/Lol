@@ -1,0 +1,33 @@
+getgenv().autoFarmCoins = false;
+loadstring(game:HttpGet(("https://raw.githubusercontent.com/REDzHUB/LibraryV2/main/redzLib")))()
+
+MakeWindow({
+  Hub = {
+    Title = "F6 Hub| murderer mystery 2",
+    Animation = "by : F6 | youssef"
+  },
+  Key = {
+    KeySystem = true,
+    Title = "المفتاح",
+    Description = "يجب عليك كتابة المفتاح لتدخل",
+    KeyLink = "",
+    Keys = {"Murderer mystery 2 F6Hub"},
+    Notifi = {
+      Notifications = true,
+      CorrectKey = "يتم الان تشغييل السكربت",
+      Incorrectkey = "المفتاح غير صحيح",
+      CopyKeyLink = "تم النسخ"
+    }
+  }
+})
+
+--[[
+  Hub = {
+    Title = "REDz HUB" -- <string> Titulo do seu script
+    Animation = "by : redz9999" -- <string> Adiciona um texto na animacão do seu HUB
+  },
+  Key = {
+    KeySystem = <bollean> Adiciona um sistema de chaves
+    Title = "Key System" <string> Adiciona um titulo ao seu sistema de chaves
+    Description = "" <string> Adiciona uma descrição ao seu sistema de chaves
+    KeyLink = "" <string> Adicina o Link onde pega a chave do HUB
