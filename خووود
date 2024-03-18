@@ -31,3 +31,152 @@ MakeWindow({
     Title = "Key System" <string> Adiciona um titulo ao seu sistema de chaves
     Description = "" <string> Adiciona uma descrição ao seu sistema de chaves
     KeyLink = "" <string> Adicina o Link onde pega a chave do HUB
+    Keys = {"1234"} <table> Adiciona as Chaves
+    Notifi = {
+      Notifications = true <boolean> Adicina notificações ao sistema de chaves
+      CorrectKey = "Running the Script..." <string> notificação quando a chave estiver correta
+      Incorrectkey = "The key is incorrect" <string> notificação quando a chave estiver incorreta
+      CopyKeyLink = "Copied to Clipboard" <string> notificação quando o link da chave fir copiado
+    }
+  }
+]]
+
+local Main = MakeTab({Name = "Main | القائمة الرئيسية"})
+
+--[[
+  Name = "Main" <string> Nome da guia
+]]
+
+local section = AddSection(Main, {"Main | القائمة الرئيسية"})
+
+local Main2 = MakeTab({Name = "Teleport | انتقالات"})
+
+--[[
+  Name = "Main" <string> Nome da guia
+]]
+
+local section2 = AddSection(Main2, {"Teleport | انتقالات"})
+
+--[[
+  {"Teste"} <table> nome da janela
+]]
+
+
+
+--[[
+  Name = "Toggle teste" <string> nome da sua caixa de seleção
+  Default = false <boolean> valor padrão
+  Callback = function(Value)
+    -- função da sua caixa de seleção
+  end
+]]
+
+AddButton(Main, {
+  Name = "esp | كشف",
+  Callback = function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/ukfDsja8"))()
+    end
+})
+
+--[[
+  Name = "Botão teste" <string> nome do seu botão
+  Callback = function()
+    -- funcão do seu botão
+  end
+]]
+
+--[[
+  Name = "Toggle teste" <string> nome da sua caixa de seleção
+  Default = false <boolean> valor padrão
+  Callback = function(Value)
+    -- função da sua caixa de seleção
+  end
+]]
+
+
+--[[
+  Name = "Main" <string> Nome da guia
+]]
+
+AddButton(Main, {
+  Name = "slient aim | ايم تلقائي",
+  Callback = function()
+     loadstring(game:HttpGet("https://pastebin.com/raw/RDB8Dnmn"))()
+    end
+})
+
+AddButton(Main, {
+  Name = "God mod | دم غير نهائي",
+  Callback = function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 999999199999999999
+  end
+})
+
+
+AddButton(Main2, {
+  Name = "Tp to murder| انتقال للقاتل",
+  Callback = function()
+    for _, player in pairs(game:GetService("Players"):GetPlayers()) do
+		if player.Backpack:FindFirstChild("Knife") ~= nil or game.Workspace[player.Name]:FindFirstChild("Knife") ~= nil then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame
+			break
+		end
+  end
+end
+})
+
+local Toggle = AddToggle(Main, {
+  Name = "Auto farm coins | جمع فلوس تلقائي",
+  Default = false,
+  Callback = function(bool)
+    getgenv().autoFarmCoins = bool
+  end
+})
+
+
+task.spawn(function ()
+	while true do
+		wait(.25)
+		if getgenv().autoFarmCoins then
+			for _, part in pairs(game.Workspace:GetDescendants()) do
+				if getgenv().autoFarmCoins == false then
+					break
+				end
+ 
+				if part.Name == "CoinContainer" then
+					if part.Coin_Server:FindFirstChild("Coin") ~= nil then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = part.Coin_Server.Coin.CFrame
+					end
+				end
+			end
+		end
+	end
+end)
+
+AddButton(Main, {
+  Name = "Kill all (Murder) | قتل الجميع (لازم قاتل)",
+  Callback = function()
+    if game.Players.LocalPlayer.Backpack:FindFirstChild("Knife") ~= nil or game.Workspace[game.Players.LocalPlayer.Name]:FindFirstChild("Knife") ~= nil then
+		local players = game:GetService("Players")
+		for _, player in pairs(players:GetPlayers()) do
+			if player.Name ~= game.Players.LocalPlayer.Name then
+				repeat wait()
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = player.Character.HumanoidRootPart.CFrame * CFrame.new(0, 0, 1)
+				until
+					player.Character.Humanoid.Health == 0
+			end
+		end
+	else
+		print("[ERROR]  انت مش القاتل")
+      end
+  end
+})
+
+AddButton(Main2, {
+  Name = "Teleport to lobby | انتقال للمكان الاساسي",
+  Callback = function(bool)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-108.5, 145, 0.6)
+ end
+})
+
+
